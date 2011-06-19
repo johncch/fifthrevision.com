@@ -1,0 +1,5 @@
+*.swp
+*.swo
+.DS_Store
+content/**
+static/fonts/**

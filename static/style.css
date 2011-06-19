@@ -1,0 +1,295 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/***
+ * Fonts
+ ******/
+
+@font-face {
+    font-family: 'MerriweatherRegular';
+    src: url('fonts/Merriweather-webfont.eot');
+    src: url('fonts/Merriweather-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Merriweather-webfont.woff') format('woff'),
+         url('fonts/Merriweather-webfont.ttf') format('truetype'),
+         url('fonts/Merriweather-webfont.svg#MerriweatherRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CallunaSansRegular';
+    src: url('fonts/CallunaSansRegular-webfont.eot');
+    src: url('fonts/CallunaSansRegular-webfont.eot?iefix') format('eot'),
+         url('fonts/CallunaSansRegular-webfont.woff') format('woff'),
+         url('fonts/CallunaSansRegular-webfont.ttf') format('truetype'),
+         url('fonts/CallunaSansRegular-webfont.svg#webfontnehNrF5g') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/**
+ * Start Main CSS file
+ ***/
+
+html, body {
+	height: 100%;
+}
+
+body {
+	color: #665d4c;
+	font-family: "CallunaSansRegular", "Helvetica", "Arial", serif;
+	height: 100%;
+	line-height: 1.4;
+}
+
+#primary-nav {
+	padding: 60px 0 0 50px;
+	width: 230px;
+	line-height: 1.0;
+	float: left;
+	font-size: 92%;
+}
+
+#primary-nav li {
+	margin: 0.2em 0 0.3em;
+}
+
+#primary-nav li a {
+	text-decoration: none;
+	color: #777777;
+}
+
+#primary-nav li a:hover {
+	background: #ade7f6;
+	color: #333333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #555555;
+	font-family: "MerriweatherRegular";
+}
+
+h1 {
+	font-size: 16pt;
+	margin: 2em 0 0.2em;
+}
+
+h2 {
+	font-size: 18pt;
+	margin: 0 0 1em;
+}
+
+h3 {
+	font-size: 14pt;
+	margin: 1em 0 0.5em;
+}
+
+p {
+	margin: 0 0 0.8em;
+}
+
+img {
+	-moz-box-shadow: 0px 0px 8px 0px #d0d0d0;
+	-webkit-box-shadow: 0px 0px 8px 0px #d0d0d0;
+	box-shadow: 0px 0px 8px 0px #d0d0d0;
+	margin: 0 auto;
+	display: block;
+}
+
+a {
+	color: #4ba3b8;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#contents {
+	height: 100%;
+	width: 70%;
+	position: relative;
+	left: 280px;
+}
+
+.content-wrapper {
+	position: absolute;
+	left: 50px;
+	top: 0;
+	bottom: 0;
+	width: 700px;
+	opacity: 0;
+	background: url(images/content-side-long.png) repeat-y left top;
+}
+
+.content {
+	padding: 100px 0 50px 40px;
+	margin: 0 0 0 40px;
+	background: white;
+	min-height: 400px;
+}
+
+#back-button {
+	width: 62px;
+	height: 38px;
+	background: url(images/back_button.png) no-repeat;
+	margin: 0 0 2em 0;
+	cursor: pointer;
+}
+
+#back-button:hover {
+	background: url(images/back_button_hover.png) no-repeat;
+}
+
+#secondary-content {
+	display: none;
+}
+
+#content-glass {
+	height: 100%;
+	display: none;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	width: 700px;
+}
+
+#nav-main {
+	opacity: 0;
+}
+
+#nav-content {
+	opacity: 0;
+}
+
+#loading {
+	position: relative;
+	left: 50px;
+	top: 100px;
+	opacity: 0;
+}
+
+.loading {
+	position: absolute;
+	width: 600px;
+	height: 499px;
+}
+
+#loading-1 {
+	background: url(images/loading.png) no-repeat;
+}
+
+#loading-2 {
+	background: url(images/loading2.png) no-repeat;
+}
+
+.metadata {
+	margin: 0 0 1.5em;
+	font-size: 90%;
+}
+
+.header {
+	color: black;
+}
+
+.hover-alt {
+	color: white;
+	overflow: visible;
+	padding: 2px 2px 2px 10px;
+	margin-left: 7px;
+	font-size: 80%;
+	background: #333;
+}
+
+.hover-alt:before {
+	content: "";
+	position: absolute;
+	top: 4px;
+	left: -5px;
+	width: 0px; 
+	height: 0px; 
+	border-bottom: 5px solid transparent;  /* left arrow slant */
+	border-top: 5px solid transparent; /* right arrow slant */
+	border-right: 5px solid #333; /* bottom, add background color here */
+	font-size:0px;
+	line-height:0px;
+}
+
+#footer {
+	margin: 50px 0 0 0;
+}
+
+.date {
+	color: black;
+	text-align: right;
+	padding-right: 50px;
+}
+
+.signature {
+	height: 57px;
+	width: 100%;
+	background: url(images/signature.png) right no-repeat;
+}
+
+.ngg-gallery-thumbnail img {
+	float: left;
+	margin: 40px 30px 0px 0;
+}
+
+.clear {
+	clear: both;
+}
+
+#notice {
+	position: absolute;
+	left: 50px;
+	top: 50px;
+}
