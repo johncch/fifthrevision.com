@@ -18,7 +18,9 @@ var customFields = {
 var allCustomFields;
 
 if(!console) {
-	console.log = function(){};
+	var console = {
+		log: function(){}
+	}
 }
 
 // jQuery settings
@@ -197,7 +199,7 @@ function navigationHandler(href) {
 
 	currentLink = href;
 	if(currentLink == "#!/resume") {
-		var content = '<iframe src="http://crocodoc.com/1OAdgYM?embedded=true" width="800" height="1070" style=""></iframe>';
+		var content = '<iframe src="http://crocodoc.com/v8OXAWQ?embedded=true" width="800" height="1070" style=""></iframe>';
 		curPageRequestId = -1;
 		setContentToPage(content, curPageRequestId);
 		return;
