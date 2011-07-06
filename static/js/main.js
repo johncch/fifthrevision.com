@@ -16,6 +16,7 @@ var customFields = {
 	"other_info": "Other Information"
 };
 var allCustomFields;
+var contentWrapperHeight;
 
 if(!console) {
 	var console = {
@@ -32,6 +33,7 @@ var curPageRequestId = 0;
 var activeContent = null;
 var secondaryContent = null;
 var contentGlass = null;
+var contentFixed = null;
 
 var aDiv;
 
@@ -97,6 +99,7 @@ $(document).ready(function() {
 
 	secondaryContent = $("#secondary-content");
 	contentGlass = $("#content-glass");
+	contentFixed = $(".content-fixed");
 	contentGlass.click(function() {
 		contentGlass.css("display", "none");
 		fadeOutSupportPage();
@@ -119,6 +122,10 @@ $(document).ready(function() {
 	}, 1500);
 
 	$(window).resize(windowResizeHandler);
+
+	/*$(window).scroll(function(e) {
+		positionSecondaryContent();
+	});*/
 
 	var host = window.location.host;
 	var href = window.location.href;
@@ -199,7 +206,7 @@ function navigationHandler(href) {
 
 	currentLink = href;
 	if(currentLink == "#!/resume") {
-		var content = '<iframe src="http://crocodoc.com/v8OXAWQ?embedded=true" width="800" height="1070" style=""></iframe>';
+		var content = '<iframe src="http://crocodoc.com/CNDALE2?embedded=true" width="800" height="1070" style=""></iframe>';
 		curPageRequestId = -1;
 		setContentToPage(content, curPageRequestId);
 		return;
@@ -286,6 +293,17 @@ function setContentToSupportPage(data) {
 		left: SECOND_PAGE_LEFT,
 		opacity: 1
 	}, 1000);
+	contentGlass.css("height", contentWrapperHeight);
+	// positionSecondaryContent();
+}
+
+function positionSecondaryContent() {
+		var h = contentFixed.height();
+		var t = $(window).scrollTop();
+		var targetH = (h + t > contentWrapperHeight - 150) ? contentWrapperHeight - h - 150 : t;
+		contentFixed.stop().animate({
+			top: targetH
+		}, "slow");
 }
 
 function fadeOutSupportPage() {
@@ -320,14 +338,14 @@ function resizeContentWrappers() {
 	}
 	maxContentDivH += 150;
 
-	height = (maxContentDivH > $(window).height()) ? maxContentDivH : $(window).height();
+	contentWrapperHeight = (maxContentDivH > $(window).height()) ? maxContentDivH : $(window).height();
 
 	$(".content-wrapper").each(function() {
-		$(this).css("height", height);
+		$(this).css("height", contentWrapperHeight);
 	});
 
 	$(".content").each(function() {
-		$(this).css("height", height - 150);
+		$(this).css("height", contentWrapperHeight - 150);
 	});
 }
 

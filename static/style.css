@@ -173,6 +173,7 @@ a:hover {
 	margin: 0 0 0 40px;
 	background: white;
 	min-height: 400px;
+	min-width: 600px;
 }
 
 #back-button {
@@ -189,6 +190,11 @@ a:hover {
 
 #secondary-content {
 	display: none;
+	width: 700px;
+}
+
+#secondary-content .content-fixed {
+	position: relative;
 }
 
 #content-glass {
