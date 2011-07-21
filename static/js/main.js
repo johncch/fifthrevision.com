@@ -312,7 +312,8 @@ function setContentToPage(level) {
 			if(data.post.categories[0].slug == "writing") {
 				var postDate = data.post.date;
 				var year = postDate.substr(0, 4);
-				var month = parseInt(postDate.substr(5,2)) - 1;
+				console.log(postDate.substr(5,2));
+				var month = parseInt(postDate.substr(5,2), 10) - 1;
 				var date = postDate.substr(8, 2);
 				var strDate = "- " + MONTHS[month] + " " + date + ", " + year;
 				content.append($("<div class='date'>").text(strDate));
@@ -351,7 +352,13 @@ function setContentToPage(level) {
 		
 		for (var i = 0; i < curActiveContent; i++) {
 			var aContent = activeContents[i];
-			aContent.children(".content-glass").css("display", "block");
+			aContent.children(".content-glass").css({
+				"display": "block",
+				"opacity": 0.01
+			}).animate({
+				"opacity": 0.4
+			});
+			
 		};
 
 		activeContents.push(contentWrapper);

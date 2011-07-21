@@ -211,12 +211,13 @@ a:hover {
 .content-glass {
 	height: 100%;
 	display: none;
-	left: 0;
+	left: 40px;
 	right: 0;
 	top: 0;
 	bottom: 0;
 	position: absolute;
 	width: 700px;
+	background: white;
 }
 
 #nav-main {
