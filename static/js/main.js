@@ -1,5 +1,7 @@
+// Copyright (c) 2011 Chong Han Chua
+
 // System Constants
-VERSION = 1.1;
+VERSION = 1.5;
 BLOG_URL = "core/";
 
 // Constants
@@ -49,7 +51,7 @@ var curPageRequestId = 0;
 var aDiv;
 
 $(document).ready(function() {
-	console.log("Hi! Welcome to fifthrevision.com version " + VERSION);
+	console.log("Hi! Welcome to fifthrevision.com, version " + VERSION);
 	$("#notice").remove();
 
 	ALL_CUSTOM_FIELDS = "";
@@ -272,6 +274,13 @@ function mouseoutHandler(e) {
 	});
 }
 
+/**
+ * Sets a content data structure into a certain "level" in the page
+ * level - numerical level, defaults to 0
+ *
+ * @return
+ * a function closure
+ */
 function setContentToPage(level) {
 	level = level || 0;
 	return function(data, txId) {
@@ -355,6 +364,10 @@ function setContentToPage(level) {
 	}
 }
 
+/**
+ * Event handler for clicking on non top level content
+ * e - jquery event object
+ */
 function glassClickHandler(e) {
 	var self = $(e.currentTarget);
 	self.css("display", "none");
@@ -365,6 +378,11 @@ function glassClickHandler(e) {
 	fadeOutToLevel(numLevel);
 }
 
+
+/**
+ * Event handler for clicking on back button
+ * e - jquery event object
+ */
 function backButtonClickHandler(e) {
 	var self = $(e.currentTarget);
 	var container = self.parent().parent(".content-wrapper");
@@ -374,6 +392,10 @@ function backButtonClickHandler(e) {
 	fadeOutToLevel(numLevel - 1);
 }
 
+/**
+ * Fades out stacked content objects to a certain level
+ * level - number value of level to retain
+ */
 function fadeOutToLevel(level) {
 	curActiveContent = level + 1;
 	for(var i = activeContents.length; i > curActiveContent; i--) {
@@ -388,6 +410,10 @@ function fadeOutToLevel(level) {
 	resizeContentWrappers();
 }
 
+/**
+ * A function to iterate through and resize content wrappers
+ * The main use of this function is to ensure the background image stretches
+ */
 function resizeContentWrappers() {
 	$(".content").each(function() {
 		$(this).css("height", null);
@@ -414,7 +440,8 @@ function resizeContentWrappers() {
 	});
 }
 
-// Retrieve list of documents and fade in
+// The following functions provide synchronization for a parallel AJAX request
+// upon first load. To coordinate the menu fade in time.
 var writingSet = false;
 
 function setWriting(data) {
