@@ -87,7 +87,6 @@ $(document).ready(function() {
 		e.preventDefault();
 		var url = $(e.currentTarget).attr("href");
 		var image = $("<img>").attr("src", url);
-		// setContentToSupportPage(image);
 		curPageRequestId = NO_REQUEST_TXID;
 		setContentToPage(curActiveContent)(image, NO_REQUEST_TXID);
 	});
@@ -100,6 +99,9 @@ $(document).ready(function() {
 		var urls = href.split("/");
 		var action = urls[0];
 
+		if(currentLink == href) return;
+
+		currentLink = href;
 		curPageRequestId = request(BLOG_URL, toRequestString({
 			"json": ACTION_MAP[action],
 			"slug": urls[1],
@@ -312,7 +314,6 @@ function setContentToPage(level) {
 			if(data.post.categories[0].slug == "writing") {
 				var postDate = data.post.date;
 				var year = postDate.substr(0, 4);
-				console.log(postDate.substr(5,2));
 				var month = parseInt(postDate.substr(5,2), 10) - 1;
 				var date = postDate.substr(8, 2);
 				var strDate = "- " + MONTHS[month] + " " + date + ", " + year;
@@ -323,7 +324,7 @@ function setContentToPage(level) {
 			content.append("<h2>" + data.category.title + "</h2>");
 			var ul = $("<ul class='post-list'>");
 			for (var i = 0; i < data.posts.length; i++) {
-				var a = $("<a>").attr("href", "#!/post/" + data.posts[i].slug).text(data.posts[i].title);
+				var a = $("<a>").attr("href", "#!/post/" + data.posts[i].slug).html(data.posts[i].title);
 				var li = $("<li>").append(a);
 				ul.append(li);
 			}
@@ -336,7 +337,8 @@ function setContentToPage(level) {
 		var contentWrapper = $("<div class='content-wrapper'>");
 		contentWrapper.addClass("content-wrapper-level-" + level);
 		contentWrapper.append(content);
-		contentWrapper.append("<div class='content-glass'>");
+		contentWrapper.append("<div class='content-glass' onclick=''>");
+		// weird hack for onclick for live click event binding
 
 		if(level == 0) {
 			$("#loading").after(contentWrapper);
@@ -413,6 +415,10 @@ function fadeOutToLevel(level) {
 		}, FADE_OUT_TIME, function() {
 			$(this).remove();	
 		});
+	}
+	if(activeContents.length > 0) {
+		var content = activeContents[activeContents.length - 1];
+		content.children(".content-glass").css("display", "none");
 	}
 	resizeContentWrappers();
 }
