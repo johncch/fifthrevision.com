@@ -82,6 +82,8 @@ $(document).ready(function() {
 
 	$("#list-portfolio a").live("mouseover", mouseoverHandler);
 	$("#list-portfolio a").live("mouseout", mouseoutHandler);
+	$("#footer a").live("mouseover", mouseoverHandler);
+	$("#footer a").live("mouseout", mouseoutHandler);
 
 	$(".content a:has(img)").live("click", function(e) {
 		e.preventDefault();
@@ -244,6 +246,7 @@ function mouseoverHandler(e) {
 	var alt = curTarget.attr("alt");
 	if(!alt) return;
 
+	var curTargetH = curTarget.height();
 	var pos = curTarget.position();
 
 	aSpan = $("<span style='display:none;font-size:80%'>");
@@ -251,11 +254,12 @@ function mouseoverHandler(e) {
 	$("body").append(aSpan);
 
 	var w = aSpan.width() + 10;
+	var h = aSpan.height();
 
 	aSpan.remove();
 
 	aDiv = $("<div class='hover-alt'>").css("position", "absolute");
-	aDiv.css("left", pos.left + curTarget.width() + 10).css("top", pos.top);
+	aDiv.css("left", pos.left + curTarget.width() + 10).css("top", pos.top + ((curTarget.height() - h) / 2));
 	aDiv.css("width", 1);
 	aDiv.append($("<div>").css("width", w).text(alt));
 	aDiv.animate({

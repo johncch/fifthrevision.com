@@ -311,3 +311,34 @@ a:hover {
 	left: 50px;
 	top: 50px;
 }
+
+.footer-icon {
+	display: block;
+	width: 30px;
+	height: 30px;
+}
+
+#rss-icon {
+	background: url(images/icon-rss.png) no-repeat;
+}
+
+#footer li a#rss-icon:hover {
+	background: transparent url(images/icon-rss-hover.png) no-repeat;
+}
+
+
+#github-icon {
+	background: url(images/icon-github.png) no-repeat;
+}
+
+#footer li a#github-icon:hover {
+	background: transparent url(images/icon-github-hover.png) no-repeat;
+}
+
+#mail-icon {
+	background: url(images/icon-email.png) no-repeat;
+}
+
+#footer li a#mail-icon:hover {
+	background: transparent url(images/icon-email-hover.png) no-repeat;
+}
